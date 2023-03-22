@@ -1,0 +1,26 @@
+@font-face {
+    font-family: sukhumvit-PhillipLife;
+    src: url('../fonts/sukhumvittadmai_lig-webfont.eot');
+    src: url('../fonts/sukhumvittadmai_lig-webfont.eot?') format('embedded-opentype'), url('../fonts/sukhumvittadmai_lig-webfont.svg') format('svg'), url('../fonts/sukhumvittadmai_lig-webfont.woff') format('woff'), url('../fonts/sukhumvittadmai_lig-webfont.woff2') format('woff2'), url('../fonts/sukhumvittadmai_lig-webfont.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: sukhumvit-Bold;
+    src: url('../fonts/sukhumvittadmai_bol-webfont.eot');
+    src: url('../fonts/sukhumvittadmai_bol-webfont.eot?') format('embedded-opentype'), url('../fonts/sukhumvittadmai_bol-webfont.svg') format('svg'), url('../fonts/sukhumvittadmai_bol-webfont.woff') format('woff'), url('../fonts/sukhumvittadmai_bol-webfont.woff2') format('woff2'), url('../fonts/sukhumvittadmai_bol-webfont.ttf') format('truetype');
+}
+
+body {
+    font-family: sukhumvit-PhillipLife;
+    font-size: 16px;
+
+}
+
+button {
+    font-size: 16px !important;
+}
+.p-datatable-scrollable .p-datatable-thead>tr>th, .p-datatable-scrollable .p-datatable-tbody>tr>td, .p-datatable-scrollable .p-datatable-tfoot>tr>td {
+  font-family: 'sukhumvit-PhillipLife';
+  /* font-size:0.8rem; */
+
+}

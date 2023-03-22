@@ -1,0 +1,39 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark mb-3">
+    <a class="navbar-brand" routerLink="/home/main">
+        <img src="assets/images/p.jpg" style="margin-top: -10px;height:40px;width:40px;" />
+    </a>
+    <a class="navbar-brand" routerLink="/home/main">{{appName}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li *ngFor="let menu of menues" [className]="!menu.submenues?'nav-item':'nav-item dropdown'">
+                <a class="nav-link" routerLink="{{menu.url}}" routerLinkActive="active" *ngIf="(!menu.submenues)&&menu.visible">
+                    <span class="{{menu.glyphicon}}"> </span>
+                    {{menu.name}}
+                </a>
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" routerLinkActive="active" *ngIf="menu.submenues&&menu.visible">
+                    <span class="{{menu.glyphicon}}"> </span>
+                    {{menu.name}}
+                </a>
+                <ul class="dropdown-menu" *ngIf="menu.submenues">
+                    <li *ngFor="let submenu of menu.submenues">
+                        <a class="dropdown-item" routerLink="{{submenu.url}}" routerLinkActive="active" *ngIf="submenu.visible">
+                            <span class="{{submenu.glyphicon}}"> </span>
+                            {{submenu.name}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <span class="navbar-text mr-3" *ngIf="appRegion"><span class="fa fa-hdd-o"></span> {{appRegion}}</span> 
+            <span class="navbar-text mr-3" *ngIf="username"><span class="fa fa-user"></span> {{username}}</span> 
+            <span class="nav-link" *ngIf="username"><a (click)="logout()"><span class="fa fa-unlock-alt"></span> Sign Off</a></span>
+        </ul>
+    </div>
+</nav>

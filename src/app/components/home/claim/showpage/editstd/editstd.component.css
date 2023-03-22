@@ -1,0 +1,5 @@
+.pointer {cursor: pointer!important;}
+table.row-select.dataTable tbody td
+{
+cursor: pointer;
+}

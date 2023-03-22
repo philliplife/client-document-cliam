@@ -1,0 +1,23 @@
+.leftSide, .rightSide{
+  /* height: 70vh; */
+  width: 100%;
+  background-color: rgb(241, 243, 247)!important;
+
+}
+.rightSide
+{
+  background-color: rgb(241, 243, 247)!important;
+}
+
+@media screen and  (min-width: 768px){
+  .leftSide, .rightSide{
+    /* height : 85vh; */
+  }
+
+
+}
+
+/* .leftSide{
+   background-color: rgb(244, 245, 247);
+} */
+

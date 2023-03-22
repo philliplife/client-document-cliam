@@ -1,0 +1,65 @@
+<div id="screenLoading" *ngIf="loading"></div>
+<div *ngIf="showIntro">
+    <div class="mx-2 my-2 card text-center" style="min-height: 40vh;min-height: 40vh;
+    padding-top: 5%;"><i class="fa fa-search fa-5x" aria-hidden="true" style="color:rgb(107, 121, 150)"></i> <span style="font-size:3rem;color:rgb(0, 60, 189);padding-top:0.3rem">กรุณาระบุเงื่อนไขในการค้นหา</span>
+    </div>
+
+
+</div>
+
+
+
+
+<div *ngIf="!showIntro">
+
+    <span style="text-align:right">
+
+        <h3 style="padding-top:1rem;padding-right: 1rem;">ผลการค้นหาข้อมูลสินไหม</h3>
+
+    </span>
+    <div class="mx-2 my-2 card">
+        <p-table responsiveLayout="scroll" #dt [value]="claimLst_" [columns]="cols_" [paginator]="true" [rows]="10"
+            selectionMode="single" (onRowSelect)="onRowSelect($event)" [scrollable]="true"
+            [globalFilterFields]="['claim_no','policy_no','insured_first_name']" scrollHeight="600px"
+            styleClass="p-datatable-customers">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th>#</th>
+                    <th *ngFor="let col of cols_">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-claimLst let-rowData let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+                    <td style="text-align:center">{{rowIndex+1}}</td>
+                    <td style="text-align:center">{{claimLst.claim_no}}</td>
+                    <td style="text-align:center">{{claimLst.policy_type}}</td>
+                    <td style="text-align:center">{{claimLst.policy_no}}</td>
+                    <td style="text-align:center">{{claimLst.owner_first_name}}</td>
+                    <td style="text-align:center">{{claimLst.owner_last_name}}</td>
+                    <td style="text-align:center">{{claimLst.insured_first_name}}</td>
+                    <td style="text-align:center">{{claimLst.insured_last_name}}</td>
+                    <td style="text-align:center">
+                        <!-- {{claimLst.claim_status}} -->
+                        <span class="text-success" *ngIf="claimLst.claim_status=='อนุมัติ'">อนุมัติ
+                        </span>
+                        <span class="text-warning" *ngIf="claimLst.claim_status=='รอผล'">รออนุมัติ
+                        </span>
+
+
+                    </td>
+                    <td style="text-align: center"><span *ngIf="!claimLst.docushare_submit">-</span>
+                      <span *ngIf="claimLst.docushare_submit"><i class="fa fa-check-circle text-success" aria-hidden="true"></i></span></td>
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="paginatorleft" let-state>
+                Showing {{(state.page * state.rows) + 1}} to {{state.rows * (state.page + 1)}} of
+                {{state.totalRecords}}
+            </ng-template>
+        </p-table>
+
+
+    </div>
+</div>

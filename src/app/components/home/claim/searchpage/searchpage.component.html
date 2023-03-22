@@ -1,0 +1,107 @@
+<!-- <div id="screenLoading" *ngIf="loading"></div> -->
+<div class=" searchBox">
+  
+<div class="container">
+  <h5 style = "padding-top:1.0rem">ค้นหาข้อมูลสินไหม</h5>
+  <select  class="custom-select" #teams (change)="onSelected(teams.value)">
+    <option default>กรุณาระบุเงื่อนไขในการค้นหา</option>
+		<option >เลขที่สินไหม</option>
+		<option>เลขกรมธรรม์</option>
+		<option>ชื่อ-สกุล</option>
+		
+	</select>
+  <br><br>
+  <!-- Value: {{ SearchForm.value | json }} -->
+  <form [formGroup]="SearchForm" (ngSubmit)="onSubmit()" novalidate >
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <!-- <label for="inputEmail4">เลขที่สินไหม</label> -->
+        <input type="text" formControlName="claim_no" class="form-control" id="claim_no" placeholder="เลขที่สินไหม"
+          (focus)="focusFunction($event,'claim_no')">
+      </div>
+      <div class="form-group col-md-12">
+        <!-- <label for="inputPassword4">เลขกรมธรรม์</label> -->
+        <input type="text" class="form-control" formControlName="policy_no" id="policy_no" placeholder="เลขกรมธรรม์"
+          (focus)="focusFunction($event,'policy_no')" (click)="click($event)">
+          <div *ngIf="myForm['policy_no'].touched &&
+          myForm['policy_no'].invalid" class="alert alert-danger">
+          <!-- <div *ngIf="myForm['policy_no'].errors &&
+            myForm['policy_no'].errors['required']">กรุณาระบุเลขกรมธรรม์ให้ถูกต้อง</div> -->
+          <div *ngIf="myForm['policy_no'].errors &&
+            myForm['policy_no'].errors['minlength']">กรุณาระบุเลขกรมธรรม์ให้ถูกต้อง</div>
+        </div>
+      </div>
+      <div class="form-group col-md-12">
+        <!-------------------------------------------------------->
+        <div><label class="form-check-label">ประเภทกรมธรรม์</label></div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" value="OB" formControlName="policy_type" name="policy_type">OB
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" value="PA" formControlName="policy_type" name="policy_type">PA
+          </label>
+        </div>
+
+        <!-------------------------------------------------------->
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <!-- <label for="inputEmail4">ชื่อ</label> -->
+        <input type="text" class="form-control" formControlName="first_name" id="first_name" placeholder="ชื่อ"
+          (focus)="focusFunction($event,'first_name')">
+        <!-- error block -->
+        <div *ngIf="myForm['first_name'].touched &&
+          myForm['first_name'].invalid" class="alert alert-danger">
+          <div *ngIf="myForm['first_name'].errors &&
+            myForm['first_name'].errors['required']">Name is required.</div>
+          <div *ngIf="myForm['first_name'].errors &&
+            myForm['first_name'].errors['minlength']">Name should be 3
+            character.</div>
+        </div>
+      </div>
+      <div class="form-group col-md-12">
+        <!-- <label for="inputPassword4">นามสกุล</label> -->
+        <input type="text" class="form-control" formControlName="last_name" id="last_name" placeholder="นามสกุล"
+          (focus)="focusFunction($event,'last_name')">
+        <!-- error block -->
+        <div *ngIf="myForm['last_name'].touched &&
+        myForm['last_name'].invalid" class="alert alert-danger">
+          <div *ngIf="myForm['last_name'].errors &&
+          myForm['last_name'].errors['required']">Name is required.</div>
+          <div *ngIf="myForm['last_name'].errors &&
+          myForm['last_name'].errors['minlength']">Name should be 3
+            character.</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div><label class="form-check-label">ความสัมพันธ์</label></div>
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" value="insured" formControlName="relation"
+          name="relation">ผู้ถือกรมธรรม์
+      </label>
+    </div>
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" value="owner" formControlName="relation"
+          name="relation">ผู้เอาประกัน
+      </label>
+    </div>
+    <div class="mt-2 text-center">
+      <button type="submit" class="btn btn-primary btn-sm mr-2"  >ค้นหา</button>
+      <button type="button" (click)= "clearForm()" class="btn btn-secondary btn-sm">เคลียร์</button>
+
+    </div>
+  </form>
+
+</div>
+
+</div>

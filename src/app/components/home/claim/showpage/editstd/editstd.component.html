@@ -1,0 +1,280 @@
+<div id="screenLoading" *ngIf="loading"></div>
+<div class="mx-3 my-3 card">
+  <div class="container-fluid" *ngIf="claimDetail">
+    <div class="p-3 mb-2 bg-color-search text-blue">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group"><span class="txt-hd01">เลขสินไหม : </span><span
+                  class="txt-hd02">{{claimDetail.claim_no}} </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group"><span class="txt-hd01">กรมธรรม์ : </span><span
+                  class="txt-hd02">{{claimDetail.policy_no}} </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group"><span class="txt-hd01">ผู้ถือกรมธรรม์ :
+                </span><span
+                  class="txt-hd02">{{claimDetail.owner_first_name}}
+                  {{claimDetail.owner_last_name}} </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group"><span class="txt-hd01">ผู้เอาประกัน :
+                </span><span
+                  class="txt-hd02">{{claimDetail.insured_first_name}}
+                  {{claimDetail.insured_last_name}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group"><span class="txt-hd01">โรงพยาบาล : </span><span
+                  class="txt-hd02">{{claimDetail.hospital_code}} -
+                  {{claimDetail.hospital_name}}</span>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="col-md-4">
+          <div class="col-md-12" *ngIf="!showDetailSub">
+            <div class="row">
+              <div class="drag-area">
+                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <span class="txt-hd03">กรุณาเลือกไฟล์ที่ต้องการ Upload</span><br>
+                <label for="file-upload" class="custom-file-upload">
+                  <i class="fa fa-cloud-upload"></i> Browse File
+                </label>
+                <input id="file-upload" class="button" type="file" multiple
+                  (change)="selectFiles($event)" />
+              </div>
+              <div class="col-4">
+                <!-- <button *ngIf=!showBtUpload class="btn btn-success btn-sm" [disabled]="!selectedFiles"
+                (click)="uploadFiles()">
+                Upload
+              </button> -->
+                <!-- <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="confirmUpload()">
+                ยืนยันการ Upload
+              </button> -->
+              </div>
+            </div>
+            <!-- <div *ngFor="let progressInfo of progressInfos" class="mb-2">
+          <span>{{ progressInfo.fileName }}</span>
+          <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+              attr.aria-valuenow="{{ progressInfo.value }}" aria-valuemin="0" aria-valuemax="100"
+              [ngStyle]="{ width: progressInfo.value + '%' }">
+              {{ progressInfo.value }}%
+            </div>
+          </div>
+        </div>
+        <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
+          <ul *ngFor="let msg of message; let i = index">
+            <li>{{ msg }}</li>
+          </ul>
+        </div> -->
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- <div class='row no-gutters'>
+        <div class='col-md-2 w-auto ml-auto'>
+            <button class="btn btn-success btn-sm">PR</button>
+            <button class="btn btn-danger btn-sm">DEL</button>
+        </div>
+      </div> -->
+    </div>
+    <!-- <div class="p-3 mb-2 bg-success text-white">.bg-success</div>
+    <div class="p-3 mb-2 bg-danger text-white">.bg-danger</div>
+    <div class="p-3 mb-2 bg-warning text-dark">.bg-warning</div>
+    <div class="p-3 mb-2 bg-info text-white">.bg-info</div>
+    <div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
+    <div class="p-3 mb-2 bg-dark text-white">.bg-dark</div>
+    <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
+    <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div> -->
+  </div>
+
+</div>
+
+
+<div *ngIf="showTbPrepare">
+  <div class="mx-3 my-3 card">
+    <div class="row col-md-4 w-auto ml-auto">
+      <span *ngIf=showBtUpload style="margin-bottom: 10px!important;">
+        <button type="button" [disabled]="statusE" class="btn btn-primary btn-sm
+          mx-1" (click)="confirmUpload()">
+          ยืนยันการ Upload</button>
+        <button type="button" class="btn btn-warning btn-sm"
+          (click)="cancelverify()">ยกเลิก</button>
+      </span>
+      <!-- <span style="margin-bottom: 10px!important;" *ngIf=showBtSub&&!showTbPrepare><button type="button"
+          class="btn btn-warning btn-sm mx-1" (click)="submitDoc()">Docushare
+          Submit</button> </span> -->
+    </div>
+
+    <div class="p-3 mb-2 text-white">
+
+      <div class="col-12">
+
+      </div>
+      <div>
+        <p-table *ngIf="docDetail" [value]="docDetail" [columns]="cols_"
+          [paginator]="true" [rows]="10">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th>No.</th>
+              <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                {{col.header}}
+                <!-- <p-sortIcon [field]="col.field"></p-sortIcon> -->
+              </th>
+
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-docDetail let-rowData
+            let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+              <td style="text-align:left"><span class="pointer"
+                (click)="openPDF(docDetail.document_id,docDetail.document_name,docDetail.document_type,claimDetail.claim_no)">{{rowIndex+1}}</span></td>
+              <td class="pointer" style="text-align:left"><span class="pointer"
+                  (click)="openPDF(docDetail.document_id,docDetail.document_name,docDetail.document_type,claimDetail.claim_no)">{{docDetail.document_name}}</span></td>
+              <td style="text-align:left">{{docDetail.document_description}}</td>
+              <td style="text-align:left">{{docDetail.document_status_text}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <!----------------------------/////////////////////////////-->
+      <!-- <div *ngIf="detailDocSub"> -->
+    </div>
+  </div>
+</div>
+<div class="mx-3 my-3 card" *ngIf="showTbComplete">
+  <div class="row col-md-4 w-auto ml-auto">
+    <span style="margin-bottom: 10px!important;"><button type="button"
+        class="btn btn-warning btn-sm mx-1"
+        (click)="submitDoc()">Docushare
+        Submit</button> </span>
+  </div>
+  <p-table [columns]="cols2" [value]="completeDocUp_Tb">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th>No.</th>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+          {{col.header}}
+          <!-- <p-sortIcon [field]="col.field"></p-sortIcon> -->
+        </th>
+        <th>Delete</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-completeDocUp_Tb let-rowData let-columns="columns"
+      let-rowIndex="rowIndex">
+      <tr [pSelectableRow]="rowData">
+        <td><span class="pointer"
+          (click)="openPDF(completeDocUp_Tb.document_id,completeDocUp_Tb.document_name,completeDocUp_Tb.document_type,claimDetail.claim_no)">{{rowIndex+1}}</span></td>
+        <td><span class="pointer"
+          (click)="openPDF(completeDocUp_Tb.document_id,completeDocUp_Tb.document_name,completeDocUp_Tb.document_type,claimDetail.claim_no)">{{completeDocUp_Tb.document_name}}</span></td>
+        <td>{{completeDocUp_Tb.document_description}}</td>
+        <td>{{completeDocUp_Tb.document_status_text}}</td>
+        <td>{{completeDocUp_Tb.document_upload_date}}</td>
+        <td>{{completeDocUp_Tb.document_upload_by}}</td>
+        <!-- <td *ngFor="let col of columns">{{rowData[col.field]}}
+        </td> -->
+        <td>
+          <i class="fa fa-trash-o fa-lg pointer" aria-hidden="true"
+            (click)="deletDoc(rowIndex)"></i>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+<!-- <div  class="mx-3 my-3 card" *ngIf="claimDetail">
+  <div class="row col-md-4 w-auto ml-auto">
+    <span style="margin-bottom: 10px!important;" ><button type="button"
+      class="btn btn-warning btn-sm mx-1" (click)="submitDoc()">Docushare
+      Submit</button> </span>
+      </div>
+    <p-table [columns]="cols2" [value]="claimDetail.documents">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>No.</th>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+          <th>Delete</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+        <tr [pSelectableRow]="rowData">
+          <th>{{rowIndex+1}}</th>
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+          <td>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="deletDoc(rowIndex)"></i>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+
+
+</div> -->
+<div *ngIf="showDetailSub">
+  <h3 class="hh_1">รายละเอียดการ Submit Document ไปยัง Docushare</h3>
+  <div class="mx-3 my-3 card">
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group"><span class="txt-hd01">เลขสินไหม : </span><span
+                class="txt-hd02">{{detailDocSub.claim_no}} </span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group"><span class="txt-hd01">ผู้ Submit : </span><span
+                class="txt-hd02">{{detailDocSub.submit_by}} </span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group"><span class="txt-hd01">วันที่ submit :
+              </span><span
+                class="txt-hd02">{{detailDocSub.submit_date}}</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group"><span class="txt-hd01">File name : </span><span
+                class="txt-hd02">
+                {{detailDocSub.submit_file_name}}</span>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

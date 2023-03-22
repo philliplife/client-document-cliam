@@ -1,0 +1,116 @@
+<div style="background-color:#003366; margin-bottom: 30px;" class="fade-in">
+    <a routerLink="/">
+        <img src="assets/images/philliplife.png" style="background-color: #003366; margin-left:10%" width="150px;" />
+    </a>
+</div>
+
+<div id="screenLoading" *ngIf="loading"></div>
+<div class="container">
+    <div class="row fade-in" *ngIf="!showLogin">
+        <span [innerHTML]="message">{{message}}</span>
+    </div>
+    <div class="row fade-in" *ngIf="showLogin">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="card border-info" style="border-radius: 15px 50px;">
+                <div class="card-body">
+                    <h4>
+                        <img src="assets/images/p.jpg" style="width:50px; height:50px;" />
+                        <span style="color: #003366;" class="ml-2">
+                            <strong>{{appName}} </strong>
+                        </span>
+                    </h4>
+                    <div class="text-right">version {{appVersion}} ({{appRegion}})</div>
+                    <form [formGroup]="rForm" (ngSubmit)="login_submit(rForm.value)">
+                        <div class="form-container rowspace-1">
+                            <div class="from-group">
+                                <label>
+                                    Username
+                                    <i class="fa fa-key"></i>
+                                </label>
+                                <input type="text" id="username" name="username" formControlName="username"
+                                    class="form-control form-control-sm" placeholder="username" autocomplete="off" />
+                            </div>
+                            <div class="from-group rowspace-1">
+                                <label>
+                                    Password
+                                    <i class="fa fa-lock"></i>
+                                </label>
+                                <input type="password" formControlName="password" class="form-control form-control-sm"
+                                    placeholder="password" />
+                            </div>
+                            <div class="rowspace-1">
+                                <button type="submit" class="btn btn-primary mr-3"
+                                    [disabled]="!rForm.valid||dataLoading">
+                                    เข้าสู่ระบบ </button>
+                                <span id="loading" *ngIf="dataLoading"></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="rowspace-1"></div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="alert alert-danger alert-dismissible fade-in fade show" role="alert" *ngIf="message">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true" class="fa fa-close"></span>
+                    </button>
+                    <span class="fa fa-exclamation-circle" aria-hidden="true"></span>
+                    <span [innerHTML]="message" style="padding-left: 10px;">{{message}}</span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="instruction">
+            <div class="card border-info text-primary" style="border-radius: 15px 50px;">
+                <div class="card-body">
+                    Instruction to set up environment.
+                    <ul>
+                        <li>
+                            Open UPS2 system.
+                        </li>
+                        <li>
+                            Register new project.
+                        </li>
+                        <li>
+                            Create new tasks for the project as follows:
+                            <br>"HOME", "MAIN"
+                        </li>
+                        <li>
+                            Create new groups for the project
+                            <br>and assign tasks HOME, MAIN to this groups.
+                        </li>
+                        <li>
+                            Register new system (appCode is same as 'project id').
+                        </li>
+                        <li>
+                            Open file environment.ts and environment.prod.ts
+                        </li>
+                        <li>
+                            Place appCode ex. appCode: 'UPS2'
+                        </li>
+                        <li>
+                            Place system_id in environment.ts
+                            <br>ex. system_id: '7CC01F99-4BA8-4B71-AD1F-7B15A4A63761'
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div
+    style="margin-top: 70px;position: absolute;bottom: 0;width: 100%;height: 30px;line-height: 30px;background-color: #f5f5f5;text-align: center;">
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">
+                Copyright &copy; 2021 by
+                <a href="http://www.philliplife.com">Phillip Life Assurance PLC. </a>
+                |
+                <a routerLink="privacy">
+                    <small>
+                        <span class="fa fa-lock"></span>
+                    </small> Privacy Policy</a>
+            </span>
+        </div>
+    </footer>
+</div>

@@ -1,0 +1,24 @@
+[
+    {
+        "claim_no": "11111",
+        "policy_type": "ob",
+        "policy_no": "1000002230",
+        "owner_first_name": "xxxxx",
+        "owner_last_name": "uuuuuuuu",
+        "insured_first_name": "ccccc",
+        "insured_last_name": "dddddd",
+        "claim_status": "wwwwww",
+        "docushare_submit": "hhhhh"
+    },
+    {
+        "claim_no": "11111",
+        "policy_type": "ob",
+        "policy_no": "1000002230",
+        "owner_first_name": "xxxxx",
+        "owner_last_name": "uuuuuuuu",
+        "insured_first_name": "ccccc",
+        "insured_last_name": "dddddd",
+        "claim_status": "wwwwww",
+        "docushare_submit": "hhhhh"
+    }
+]

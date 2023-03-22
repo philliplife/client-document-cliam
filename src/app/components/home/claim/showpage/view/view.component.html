@@ -1,0 +1,163 @@
+<div id="screenLoading" *ngIf="loading"></div>
+<!-- <h3 class="hh_1 text-left">รายละเอียดเอกสารการเคลม</h3> -->
+<!-- <div class="mx-3 my-3" style="padding-bottom:0.5rem">
+    <p class="float-left" style="font-size:2rem">รายละเอียดเอกสารการเคลม</p>
+    <p class="float-right" style="font-size:1.8rem;padding-right: 1rem;">BACK</p>
+</div> -->
+<p class="text-right pr-4" style="font-size:2rem">รายละเอียดเอกสารการเคลม</p>
+<div class="mx-3 my-3 card">
+    <div class="container-fluid" *ngIf="viewClaimData">
+        <div class="p-3 mb-2 bg-color-search text-blue">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group"><span class="txt-hd01">เลขสินไหม : </span><span
+                                    class="txt-hd02">{{viewClaimData.claim_no}} </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"><span class="txt-hd01">กรมธรรม์ : </span><span
+                                    class="txt-hd02">{{viewClaimData.policy_no}} </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group"><span class="txt-hd01">ผู้ถือกรมธรรม์ : </span><span
+                                    class="txt-hd02">{{viewClaimData.owner_first_name}}
+                                    {{viewClaimData.owner_last_name}} </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"><span class="txt-hd01">ผู้เอาประกัน : </span><span
+                                    class="txt-hd02">{{viewClaimData.insured_first_name}}
+                                    {{viewClaimData.insured_last_name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group"><span class="txt-hd01">โรงพยาบาล : </span><span
+                                    class="txt-hd02">{{viewClaimData.hospital_code}} -
+                                    {{viewClaimData.hospital_name}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4"></div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div> </div>
+<h5 style="padding-left:2rem;padding-top:1rem">รายละเอียดการ submit/unsubmit เอกสาร</h5>
+<div class="mx-3 my-3 card">
+    <div class="container-fluid">
+        <p-table [value]="submitData" selectionMode="single" (onRowSelect)="onRowSelect($event)">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>No</th>
+                    <th>View</th>
+                    <th>Submit_file_name</th>
+                    <!-- <th>status_code</th> -->
+                    <th>Status</th>
+                    <th>Submit Date</th>
+                    <th>Submit Time</th>
+                    <th>Submit By</th>
+                    <th>Unsubmit Date</th>
+                    <th>Unsubmit Time</th>
+                    <th>Unsubmit By</th>
+                    <th>Unsubmit Reason</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-submitData_ let-rowData let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+                    <td>{{rowIndex+1}}</td>
+                    <td><span (click)="viewSubPDF(submitData_.submit_id)">view </span></td>
+                    <td>{{submitData_.submit_file_name}}</td>
+                    <!-- <td>{{submitData_.status_code}}</td> -->
+                    <td>
+                        <span *ngIf="submitData_.status_code_text =='Submit'"><strong class="text-primary">Submit
+                            </strong></span>
+                        <span *ngIf="submitData_.status_code_text =='Unsubmit'"><strong class="text-warning">Unsubmit
+                            </strong></span>
+                    </td>
+                    <td>{{submitData_.submit_date}}</td>
+                    <td>{{submitData_.submit_time}}</td>
+                    <td>{{submitData_.submit_by}}</td>
+                    <td>{{submitData_.unsubmit_date}}</td>
+                    <td>{{submitData_.unsubmit_time}}</td>
+                    <td>{{submitData_.unsubmit_by}}</td>
+                    <td>{{submitData_.unsubmit_reason}}</td>
+
+
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+
+
+</div>
+<div *ngIf="detailFile">
+    <h5 style="padding-left:2rem;padding-top:1rem">รายละเอียดไฟล์</h5>
+    <div class="mx-3 my-3 card">
+
+        <div class="container-fluid">
+            <p-table [value]="docDatas" selectionMode="single" (onRowSelect)="openPDF($event)">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>No</th>
+                        <th>Doc. Description</th>
+                        <th>Doc. Name</th>
+                        <th>Doc. Status</th>
+                        <!-- <th>Document Type</th> -->
+                        <th>Doc. Upload By</th>
+                        <th>Doc. Upload Date/Time</th>
+                        <!-- <th>Doc. Upload Time</th> -->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-docData let-rowData let-rowIndex="rowIndex">
+                    <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+                        <td>{{rowIndex+1}}</td>
+                        <td>{{docData.document_description}}</td>
+                        <td>{{docData.document_name}}</td>
+                        <td><span>{{docData.document_status_text}}</span></td>
+                        <!-- <td>{{docData.document_type}}</td> -->
+                        <td>{{docData.document_upload_by}}</td>
+                        <td>{{docData.document_upload_date}}:{{docData.document_upload_time}}</td>
+                        <!-- <td>{{docData.document_upload_time}}</td> -->
+                    </tr>
+                </ng-template>
+            </p-table>
+            <!-- <button type="button" (click)="unsub()">Un-Submit</button> -->
+            <div class="text-right pt-2" *ngIf="checkUnSub">
+                <span class="col-md-6 pr-2">กรุณาระบุเหตุผลหากท่านต้องการยกเลิก <input type="text" class="inp_txt"
+                        [(ngModel)]="reasonUnsub"></span>
+                <span class="col-md-4"><button class="btn btn-success btn-sm" type="button"
+                        (click)="Unsub()">Un-Submit</button></span>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+
+
+
+
+<!-- document_description: "Fax claim - หนังสือแจ้งผลการพิจารณาสินไหม"
+document_id: "d7f90ba74595405e886088bd2a7cfc05"
+document_name: "FAXCLAIM _xxxxxx.pdf"
+document_status_code: "R"
+document_status_text: "อัพโหลดไฟล์อื่นแทน"
+document_type: "40"
+document_upload_by: "SAIJAI"
+document_upload_date: "15/07/2565"
+document_upload_time: "164855" -->
