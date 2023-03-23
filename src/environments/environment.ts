@@ -64,9 +64,9 @@ export const environment = {
       visible: true,
       submenues: [
         {
-          tasks_id: 'report',
-          name: 'Edit / submit doc.',
-          url: '/home/claim/edit',
+          tasks_id: 'claimedit',
+          name: 'รายงานสถานะเอกสาร',
+          url: '/home/report',
           glyphicon: 'fa fa-file',
           visible: true,
         },

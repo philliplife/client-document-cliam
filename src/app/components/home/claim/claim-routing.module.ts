@@ -19,8 +19,6 @@ children:[
  // { path: 'editstd', component: EditstdComponent, canActivate: [AuthGuard], data: { tasks_id: 'claimedit' } },
   { path: 'edit', loadChildren: () => import('./showpage/showpage.module').then(m => m.ShowpageModule), canActivate: [AuthGuard],data: { tasks_id: 'claimedit' } },
   { path: 'iquiry', loadChildren: () => import('./iquiry/iquiry.module').then(m => m.IquiryModule), canActivate: [AuthGuard],data: { tasks_id: 'claiminq' } },
-
-
 ]
 }
 ];
