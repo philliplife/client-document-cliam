@@ -11,6 +11,7 @@ import { UnauthenComponent } from './unauthen/unauthen.component';
 import { SignoffComponent } from './signoff/signoff.component';
 // import { EditComponent } from './claim/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
 //import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -23,13 +24,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     UnauthenComponent,
     SignoffComponent,
-   // EditComponent
+    // EditComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     //BrowserModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    CalendarModule,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

@@ -1,0 +1,12 @@
+.rightSide {
+    width: 100%;
+    background-color: rgb(241, 243, 247) !important;
+    height: 100rem !important;
+}
+
+.w-100 {
+    width: 100%;
+}
+.btn-search{
+    background-color:#003366;
+}
