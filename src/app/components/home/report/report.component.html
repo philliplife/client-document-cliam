@@ -1,69 +1,70 @@
-<div class="rightSide">
-  <div class="mx-3 my-3 card">
-    <form [formGroup]="formReport">
-      <div class="ui-g">
-        <div class="col-md-6">
-          <label for="icon">วันเริ่มต้น</label>
-          <p-calendar
-            dateFormat="dd/mm/yy"
-            id="startDate"
-            formControlName="startDate"
-            [showIcon]="true"
-            inputId="icon"
-            styleClass="w-100"
-            [showClear]="true"
-          >
-          </p-calendar>
-          <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
-        </div>
-        <div class="col-md-6">
-          <label for="icon">วันสิ้นสุด</label>
-          <p-calendar
-            dateFormat="dd/mm/yy"
-            id="endDate"
-            formControlName="endDate"
-            [showIcon]="true"
-            inputId="icon"
-            styleClass="w-100"
-            [showClear]="true"
-          >
-          </p-calendar>
-          <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
-        </div>
-        <div class="col-md-12">
-          <label for="icon">สถานะ</label>
-
-          <div class="field-radiobutton col-md-6">
-            <p-radioButton
-              id="submit"
-              name="submit"
-              value="S"
-              formControlName="submit"
-            ></p-radioButton>
-            <label>Submit</label>
-          </div>
-
-          <div class="field-radiobutton col-md-6">
-            <p-radioButton
-              id="submit"
-              name="submit"
-              value="P"
-              formControlName="submit"
-            ></p-radioButton>
-            <label>Pending</label>
-          </div>
-
-          <button
-            (click)="onSubmit()"
-            pButton
-            class="text-center btn-search p-button float-right"
-            id="submit"
-            type="submit">
-            <span><i class="icons pi pi-print"></i> พิมพ์รายงาน</span>
-          </button>
-
-        </div>
+<div class="card container">
+  <form [formGroup]="formReport">
+    <div class="grid">
+      <div class="col-md-6">
+        <label for="icon">วันเริ่มต้น</label>
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          id="startDate"
+          formControlName="startDate"
+          [showIcon]="true"
+          inputId="icon"
+          styleClass="w-100"
+          [showClear]="true"
+        >
+        </p-calendar>
+        <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
       </div>
-    </form>
-  </div>
+      <div class="col-md-6">
+        <label for="icon">วันสิ้นสุด</label>
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          id="endDate"
+          formControlName="endDate"
+          [showIcon]="true"
+          inputId="icon"
+          styleClass="w-100"
+          [showClear]="true"
+        >
+        </p-calendar>
+        <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
+      </div>
+      <div class="col-md-12">
+        <label for="icon">สถานะ</label>
+        <div class="field-radiobutton col-md-4">
+          <p-radioButton
+            id="submit"
+            name="submit"
+            value="S"
+            formControlName="submit"
+          ></p-radioButton>
+          <label>Submit</label>
+        </div>
+
+        <div class="field-radiobutton col-md-4">
+          <p-radioButton
+            id="submit"
+            name="submit"
+            value="P"
+            formControlName="submit"
+          ></p-radioButton>
+          <label>Pending</label>
+        </div>
+
+      </div>
+
+      <div class="col-12">
+        <button
+          (click)="onSubmit()"
+          pButton
+          class="text-center btn-submit p-button float-right"
+          id="submit"
+          type="submit"
+        >
+          <span><i class="icons pi pi-print"></i> พิมพ์รายงาน</span>
+        </button>
+      </div>
+        
+      </div>
+  </form>
 </div>

@@ -1,12 +1,24 @@
 .rightSide {
     width: 100%;
     background-color: rgb(241, 243, 247) !important;
-    height: 100rem !important;
+    height: 100%!;
 }
 
 .w-100 {
     width: 100%;
 }
-.btn-search{
-    background-color:#003366;
+.btn-submit {
+  background-color: #003366;
+  color: white;
+  border: solid 1px #003366;
+  font-family: 'sukhumvit-PhillipLife';
 }
+.p-calendar  {
+    
+    background-color: #003366;
+}
+
+
+
+
+
