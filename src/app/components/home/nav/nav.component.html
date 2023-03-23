@@ -10,6 +10,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+             <!-- Menu. -->
             <li *ngFor="let menu of menues" [className]="!menu.submenues?'nav-item':'nav-item dropdown'">
                 <a class="nav-link" routerLink="{{menu.url}}" routerLinkActive="active" *ngIf="(!menu.submenues)&&menu.visible">
                     <span class="{{menu.glyphicon}}"> </span>
@@ -28,6 +29,8 @@
                     </li>
                 </ul>
             </li>
+
+            
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

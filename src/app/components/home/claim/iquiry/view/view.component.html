@@ -58,7 +58,7 @@
 <h5 style="padding-left:2rem;padding-top:1rem">รายละเอียดการ submit/unsubmit เอกสาร</h5>
 <div class="mx-3 my-3 card">
     <div class="container-fluid">
-        <p-table [value]="submitData" selectionMode="single" (onRowSelect)="onRowSelect($event)">
+        <p-table [value]="submitData" selectionMode="single" responsiveLayout="scroll" (onRowSelect)="onRowSelect($event)">
             <ng-template pTemplate="header">
                 <tr>
                     <th>No</th>
