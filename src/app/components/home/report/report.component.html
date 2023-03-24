@@ -1,3 +1,9 @@
+<div class="rightSide" style="min-height: 90vh;">
+      <span style="text-align:right">
+
+        <h3 style="padding-top:1rem;padding-right: 1rem;">รายงานสถานะเอกสาร</h3>
+
+    </span>
 <div class="card container">
   <form [formGroup]="formReport">
     <div class="grid">
@@ -13,10 +19,9 @@
           [showClear]="true"
         >
         </p-calendar>
-        <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
       </div>
       <div class="col-md-6">
-        <label for="icon">วันสิ้นสุด</label>
+        <label for="icon">วันสิ้นสุด</label> 
         <p-calendar
           dateFormat="dd/mm/yy"
           id="endDate"
@@ -29,28 +34,29 @@
         </p-calendar>
         <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
       </div>
-      <div class="col-md-12">
-        <label for="icon">สถานะ</label>
-        <div class="field-radiobutton col-md-4">
-          <p-radioButton
-            id="submit"
-            name="submit"
-            value="S"
-            formControlName="submit"
-          ></p-radioButton>
-          <label>Submit</label>
-        </div>
+      <div class="col-12">
+        <label style="padding-top: 0.5rem;">สถานะ</label>
+        <div class="field-radiobutton">
+          <div class="field-radiobutton col-2">
+            <p-radioButton
+              id="submit"
+              name="submit"
+              value="S"
+              formControlName="submit"
+            ></p-radioButton>
+            <label style="padding-top: 0.5rem;">Submit</label>
+          </div>
 
-        <div class="field-radiobutton col-md-4">
-          <p-radioButton
-            id="submit"
-            name="submit"
-            value="P"
-            formControlName="submit"
-          ></p-radioButton>
-          <label>Pending</label>
+          <div class="field-radiobutton col-2">
+            <p-radioButton
+              id="submit"
+              name="submit"
+              value="P"
+              formControlName="submit"
+            ></p-radioButton>
+            <label style="padding-top: 0.5rem;">Pending</label>
+          </div> 
         </div>
-
       </div>
 
       <div class="col-12">
@@ -64,7 +70,8 @@
           <span><i class="icons pi pi-print"></i> พิมพ์รายงาน</span>
         </button>
       </div>
-        
-      </div>
+    </div>
   </form>
 </div>
+</div>
+

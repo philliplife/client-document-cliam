@@ -277,3 +277,15 @@ html {
 .hh_1{
   padding-left:2rem;padding-top:1rem
 }
+
+.p-calendar-w-btn .p-datepicker-trigger {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  background-color: #003366 !important;
+  border: #003366 !important;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  border-color: #003366;
+  background: #003366;
+}

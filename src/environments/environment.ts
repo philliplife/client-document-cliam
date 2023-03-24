@@ -18,14 +18,11 @@ export const environment = {
   client_id: '52308E1D-51EA-4064-8956-E14BF113069C', //static value for user profile source.
 
   apiuseroauth: 'https://centerapi.philliplife.com/apiproxy2/user.oauth.api/', //api for oauth
-  apiauthen:
-    'https://centerapi.philliplife.com/apiproxy2/securityapi/api/authen/', //api for custom auth
-  apilookup:
-    'https://centerapi.philliplife.com/apiproxy2/lookupapi/api/lookup/',
-  apiclaim:
-    'https://centerapi.philliplife.com/apiproxy2/docuclaim.api/api/claim/',
-  apiclaimreport:
-    'https://centerapi.philliplife.com/apiproxy2/ClaimApiDev/api/report/',
+  apiauthen: 'https://centerapi.philliplife.com/apiproxy2/securityapi/api/authen/', //api for custom auth
+  apilookup: 'https://centerapi.philliplife.com/apiproxy2/lookupapi/api/lookup/',
+  apiclaim: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.api/api/claim/',
+  apiclaimreport: 'https://centerapi.philliplife.com/apiproxy2/ClaimApiDev/api/report/',
+  apiReport: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.api/api/',
 
   //apiclaim:'http://localhost:55918/api/claim/',
   //apiclaimreport:'http://localhost:55817/api/report/',

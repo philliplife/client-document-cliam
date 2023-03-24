@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ShareService {
-
-  constructor() { }
+  constructor() {}
 
   errorMsg() {
-    alert('error')
+    alert('error');
   }
   confirmMsg() {
     Swal.fire({
@@ -19,18 +18,14 @@ export class ShareService {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
-    })
+    });
   }
-  test():void{
+  test(): void {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -38,19 +33,15 @@ export class ShareService {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
-    })
+    });
   }
   openBlob(data: any, nameF: any) {
-    const file = new Blob([data], { type: 'application/pdf' })
+    const file = new Blob([data], { type: 'application/pdf' });
     const fileURL = URL.createObjectURL(file);
     window.open(fileURL);
     // var a = document.createElement('a');
@@ -61,11 +52,22 @@ export class ShareService {
     // a.click();
   }
 
+  openBlobExcel(data: any) {
+    const file = new Blob([data], { type: data.type });
+    const fileURL = URL.createObjectURL(file);
+    // window.open(fileURL);
+    var a = document.createElement('a');
+    a.href = fileURL;
+    a.target = '_blank';
+    a.download = 'test';
+    document.body.appendChild(a);
+    a.click();
+  }
+
   // const fileBlob = new Blob([resp], {
   //   type: 'application/pdf'
   // });
   // const fileURL = URL.createObjectURL(fileBlob);
   // this.loading = false;
   // window.open(fileURL);
-
 }

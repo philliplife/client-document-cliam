@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ReportService } from 'src/app/services/report.service';
+import * as moment from 'moment';
+import { ShareService } from 'src/app/services';
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -10,7 +17,11 @@ export class ReportComponent implements OnInit {
   date3?: Date;
   formReport: FormGroup = this.fb.group({});
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private reportService: ReportService,
+    private shareService: ShareService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -25,7 +36,21 @@ export class ReportComponent implements OnInit {
     this.formReport.reset();
   }
 
-  onSubmit(){
+  onSubmit() {
+    const yearStart = moment(this.formReport.value.startDate).format('YYYY');
+    const startY = Number(yearStart) + 543;
+    const yearEnd = moment(this.formReport.value.endDate).format('YYYY');
+    const endY = Number(yearEnd) + 543;
+    const data = {
+      docushare_submit_date_1:
+        String(startY) + moment(this.formReport.value.startDate).format('MMDD'),
+      docushare_submit_date_2:
+        String(endY) + moment(this.formReport.value.endDate).format('MMDD'),
+      docushare_status: this.formReport.value.submit,
+    };
 
+    this.reportService.report(data).subscribe((res) => {
+      this.shareService.openBlobExcel(res);
+    });
   }
 }
