@@ -8,6 +8,7 @@ import {
 import { ReportService } from 'src/app/services/report.service';
 import * as moment from 'moment';
 import { ShareService } from 'src/app/services';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
@@ -48,9 +49,18 @@ export class ReportComponent implements OnInit {
         String(endY) + moment(this.formReport.value.endDate).format('MMDD'),
       docushare_status: this.formReport.value.submit,
     };
-
-    this.reportService.report(data).subscribe((res) => {
-      this.shareService.openBlobExcel(res);
+    this.reportService.report(data).subscribe({
+      next: (res) => {
+        this.shareService.openBlobExcel(res);
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'ระบบผิดพลาด',
+          text: 'Data not found',
+          confirmButtonText: 'ตกลง',
+        });
+      },
     });
   }
 }
