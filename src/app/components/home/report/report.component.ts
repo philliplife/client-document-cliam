@@ -17,12 +17,13 @@ import Swal from 'sweetalert2';
 export class ReportComponent implements OnInit {
   date3?: Date;
   formReport: FormGroup = this.fb.group({});
+  loading: boolean = false
 
   constructor(
     private fb: FormBuilder,
     private reportService: ReportService,
     private shareService: ShareService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -43,26 +44,23 @@ export class ReportComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true
     const yearStart = moment(this.formReport.value.startDate).format('YYYY');
     const startY = Number(yearStart) + 543;
     const yearEnd = moment(this.formReport.value.endDate).format('YYYY');
     const endY = Number(yearEnd) + 543;
     const data = {
-      docushare_submit_date_1:
-        String(startY) + moment(this.formReport.value.startDate).format('MMDD'),
-      docushare_submit_date_2:
-        String(endY) + moment(this.formReport.value.endDate).format('MMDD'),
+      docushare_submit_date_1: String(startY) + moment(this.formReport.value.startDate).format('MMDD'),
+      docushare_submit_date_2: String(endY) + moment(this.formReport.value.endDate).format('MMDD'),
       docushare_status: this.formReport.value.submit,
-      // docushare_submit_date_1: moment(this.formReport.value.startDate).format('YYYYMMDD'),
-      // docushare_submit_date_2: moment(this.formReport.value.endDate).format('YYYYMMDD'),
-      // docushare_status: this.formReport.value.submit,
     };
     this.reportService.report(data).subscribe({
       next: (res) => {
-        
-        this.shareService.openBlobExcel(res,data.docushare_status);
+        this.loading = false
+        this.shareService.openBlobExcel(res, data.docushare_status);
       },
       error: (err) => {
+        this.loading = false
         Swal.fire({
           icon: 'error',
           title: 'ระบบผิดพลาด',

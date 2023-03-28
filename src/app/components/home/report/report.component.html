@@ -1,77 +1,46 @@
+<div id="screenLoading" *ngIf="loading"></div>
 <div class="rightSide" style="min-height: 90vh;">
-      <span style="text-align:left">
+  <span style="text-align:left">
+    <h3 class="container" style="padding-top:1rem;padding-right: 1rem;">รายงานสถานะเอกสาร</h3>
+  </span>
+  <div class="card container">
+    <form [formGroup]="formReport">
+      <div class="grid">
+        <div class="col-md-6">
+          <label for="icon">วันเริ่มต้น</label>
+          <p-calendar dateFormat="dd/mm/yy" id="startDate" formControlName="startDate" [showIcon]="true" inputId="icon"
+            styleClass="w-100" [showClear]="true">
+          </p-calendar>
+        </div>
+        <div class="col-md-6">
+          <label for="icon">วันสิ้นสุด</label>
+          <p-calendar dateFormat="dd/mm/yy" id="endDate" formControlName="endDate" [showIcon]="true" inputId="icon"
+            styleClass="w-100" [showClear]="true">
+          </p-calendar>
+          <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
+        </div>
+        <div class="col-12">
+          <label style="padding-top: 0.5rem;">สถานะ</label>
+          <div class="field-radiobutton">
+            <div class="field-radiobutton col-2">
+              <p-radioButton id="submit" name="submit" value="S" formControlName="submit"></p-radioButton>
+              <label style="padding-top: 0.5rem;">Submit</label>
+            </div>
 
-        <h3 class="container" style="padding-top:1rem;padding-right: 1rem;">รายงานสถานะเอกสาร</h3>
-
-    </span>
-<div class="card container">
-  <form [formGroup]="formReport">
-    <div class="grid">
-      <div class="col-md-6">
-        <label for="icon">วันเริ่มต้น</label>
-        <p-calendar
-          dateFormat="dd/mm/yy"
-          id="startDate"
-          formControlName="startDate"
-          [showIcon]="true"
-          inputId="icon"
-          styleClass="w-100"
-          [showClear]="true"
-        >
-        </p-calendar>
-      </div>
-      <div class="col-md-6">
-        <label for="icon">วันสิ้นสุด</label> 
-        <p-calendar
-          dateFormat="dd/mm/yy"
-          id="endDate"
-          formControlName="endDate"
-          [showIcon]="true"
-          inputId="icon"
-          styleClass="w-100"
-          [showClear]="true"
-        >
-        </p-calendar>
-        <!-- <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar> -->
-      </div>
-      <div class="col-12">
-        <label style="padding-top: 0.5rem;">สถานะ</label>
-        <div class="field-radiobutton">
-          <div class="field-radiobutton col-2">
-            <p-radioButton
-              id="submit"
-              name="submit"
-              value="S"
-              formControlName="submit"
-            ></p-radioButton>
-            <label style="padding-top: 0.5rem;">Submit</label>
+            <div class="field-radiobutton col-2">
+              <p-radioButton id="submit" name="submit" value="P" formControlName="submit"></p-radioButton>
+              <label style="padding-top: 0.5rem;">Pending</label>
+            </div>
           </div>
+        </div>
 
-          <div class="field-radiobutton col-2">
-            <p-radioButton
-              id="submit"
-              name="submit"
-              value="P"
-              formControlName="submit"
-            ></p-radioButton>
-            <label style="padding-top: 0.5rem;">Pending</label>
-          </div> 
+        <div class="col-12">
+          <button (click)="onSubmit()" pButton class="text-center btn-submit p-button float-right" id="submit"
+            type="submit">
+            <span><i class="icons pi pi-print"></i> พิมพ์รายงาน</span>
+          </button>
         </div>
       </div>
-
-      <div class="col-12">
-        <button
-          (click)="onSubmit()"
-          pButton
-          class="text-center btn-submit p-button float-right"
-          id="submit"
-          type="submit"
-        >
-          <span><i class="icons pi pi-print"></i> พิมพ์รายงาน</span>
-        </button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
-</div>
-
