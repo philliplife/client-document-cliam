@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -52,14 +53,14 @@ export class ShareService {
     // a.click();
   }
 
-  openBlobExcel(data: any) {
+  openBlobExcel(data: any,status: string) {
     const file = new Blob([data], { type: data.type });
     const fileURL = URL.createObjectURL(file);
     // window.open(fileURL);
     var a = document.createElement('a');
     a.href = fileURL;
     a.target = '_blank';
-    a.download = 'test';
+    a.download = moment(new Date()).format('YYYYMMDD_HHmmss_')+ status;
     document.body.appendChild(a);
     a.click();
   }

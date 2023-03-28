@@ -35,6 +35,10 @@ export class ReportComponent implements OnInit {
       submit: new FormControl(null, [Validators.required]),
     });
     this.formReport.reset();
+    this.formReport.patchValue({
+      startDate: new Date(),
+      endDate: new Date(),
+    });
   }
 
   onSubmit() {
@@ -48,10 +52,14 @@ export class ReportComponent implements OnInit {
       docushare_submit_date_2:
         String(endY) + moment(this.formReport.value.endDate).format('MMDD'),
       docushare_status: this.formReport.value.submit,
+      // docushare_submit_date_1: moment(this.formReport.value.startDate).format('YYYYMMDD'),
+      // docushare_submit_date_2: moment(this.formReport.value.endDate).format('YYYYMMDD'),
+      // docushare_status: this.formReport.value.submit,
     };
     this.reportService.report(data).subscribe({
       next: (res) => {
-        this.shareService.openBlobExcel(res);
+        
+        this.shareService.openBlobExcel(res,data.docushare_status);
       },
       error: (err) => {
         Swal.fire({
