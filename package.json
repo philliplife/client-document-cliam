@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-prod": "ng build --prod --base-href=/DocuClaim/",
+    "build-uat": "ng build -c=uat --base-href=/DocuClaim/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
