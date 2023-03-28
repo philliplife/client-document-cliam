@@ -20,8 +20,10 @@ export const environment = {
   apiauthen: 'https://centerapi.philliplife.com/apigw/securityapi/api/authen/', //api for custom auth
   apilookup: 'https://centerapi.philliplife.com/apigw/lookupapi/api/lookup/',
   apiclaim: 'https://centerapi.philliplife.com/apigw/docuclaim.api/api/claim/',
-  apiclaimreport: 'https://centerapi.philliplife.com/apigw/ClaimApi/api/report/',
-  apiReport: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.apii/api/report/search',
+  apiclaimreport:
+    'https://centerapi.philliplife.com/apigw/ClaimApi/api/report/',
+  apiReport:
+    'https://centerapi.philliplife.com/apiproxy2/docuclaim.apii/api/report/search',
   //menuesValidated = เพื่อให้ระบบทำการ flag เป็น true เมื่อ login ผ่านแล้ว และมีการตรวจสอบสิทธิของเมนูแล้ว **กรณีกดปุ่ม refresh จะกลับมาเป็น false ใน AuthGuard จะทำการตรวจสอบ menu ใหม่
   menuesValidated: false,
   menues: [
@@ -44,6 +46,22 @@ export const environment = {
           name: 'Inquiry doc.',
           url: '/home/claim/iquiry',
           glyphicon: 'fa fa-search',
+          visible: true,
+        },
+      ],
+    },
+    {
+      tasks_id: 'home',
+      name: 'Report.',
+      url: '#',
+      glyphicon: 'fa fa-file',
+      visible: true,
+      submenues: [
+        {
+          tasks_id: 'reportStatus',
+          name: 'รายงานสถานะเอกสาร',
+          url: '/home/report',
+          glyphicon: 'fa fa-file',
           visible: true,
         },
       ],

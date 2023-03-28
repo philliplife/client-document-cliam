@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
       // { path: 'claim/edit', component: EditComponent, canActivate: [AuthGuard], data: { tasks_id: 'claimedit' } },
       { path: 'claim', loadChildren: () => import('./claim/claim.module').then(m => m.ClaimModule), canActivate: [AuthGuard],data: { tasks_id: 'claimedit' } },
-      { path: 'report', loadChildren: () => import('./report/report.module').then(m => m.ReportModule), canActivate: [AuthGuard],data: { tasks_id: 'claimedit' } },
+      { path: 'report', loadChildren: () => import('./report/report.module').then(m => m.ReportModule), canActivate: [AuthGuard],data: { tasks_id: 'reportStatus' } },
       { path: 'project', loadChildren: () => import('./project/project.module').then(m => m.ProjectModule), canActivate: [AuthGuard] },
 
       { path: 'unauthen', component: UnauthenComponent }

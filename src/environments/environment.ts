@@ -61,7 +61,7 @@ export const environment = {
       visible: true,
       submenues: [
         {
-          tasks_id: 'claimedit',
+          tasks_id: 'reportStatus',
           name: 'รายงานสถานะเอกสาร',
           url: '/home/report',
           glyphicon: 'fa fa-file',
