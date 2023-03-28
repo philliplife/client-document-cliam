@@ -18,16 +18,11 @@ export const environment = {
   client_id: '52308E1D-51EA-4064-8956-E14BF113069C', //static value for user profile source.
 
   apiuseroauth: 'https://centerapi.philliplife.com/apiproxy2/user.oauth.api/', //api for oauth
-  apiauthen:
-    'https://centerapi.philliplife.com/apiproxy2/securityapi/api/authen/', //api for custom auth
-  apilookup:
-    'https://centerapi.philliplife.com/apiproxy2/lookupapi/api/lookup/',
-  apiclaim:
-    'https://centerapi.philliplife.com/apiproxy2/docuclaim.api/api/claim/',
-  apiclaimreport:
-    'https://centerapi.philliplife.com/apiproxy2/ClaimApiDev/api/report/',
-  apiReport:
-    'https://centerapi.philliplife.com/apiproxy2/docuclaim.apii/api/report/search',
+  apiauthen: 'https://centerapi.philliplife.com/apiproxy2/securityapi/api/authen/', //api for custom auth
+  apilookup: 'https://centerapi.philliplife.com/apiproxy2/lookupapi/api/lookup/',
+  apiclaim: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.api/api/claim/',
+  apiclaimreport: 'https://centerapi.philliplife.com/apiproxy2/ClaimApiDev/api/report/',
+  apiReport: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.apii/api/',
   //menuesValidated = เพื่อให้ระบบทำการ flag เป็น true เมื่อ login ผ่านแล้ว และมีการตรวจสอบสิทธิของเมนูแล้ว **กรณีกดปุ่ม refresh จะกลับมาเป็น false ใน AuthGuard จะทำการตรวจสอบ menu ใหม่
   menuesValidated: false,
   menues: [
