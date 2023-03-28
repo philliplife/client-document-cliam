@@ -22,7 +22,7 @@ export const environment = {
   apilookup: 'https://centerapi.philliplife.com/apiproxy2/lookupapi/api/lookup/',
   apiclaim: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.api/api/claim/',
   apiclaimreport: 'https://centerapi.philliplife.com/apiproxy2/ClaimApiDev/api/report/',
-  apiReport: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.apii/api/',
+  apiReport: 'https://centerapi.philliplife.com/apiproxy2/docuclaim.api/api/',
   //menuesValidated = เพื่อให้ระบบทำการ flag เป็น true เมื่อ login ผ่านแล้ว และมีการตรวจสอบสิทธิของเมนูแล้ว **กรณีกดปุ่ม refresh จะกลับมาเป็น false ใน AuthGuard จะทำการตรวจสอบ menu ใหม่
   menuesValidated: false,
   menues: [
