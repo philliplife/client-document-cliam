@@ -32,12 +32,13 @@ export class ReportComponent implements OnInit {
     this.formReport = this.fb.group({
       startDate: new FormControl(null, [Validators.required]),
       endDate: new FormControl(null, [Validators.required]),
-      submit: new FormControl(null, [Validators.required]),
+      submit: new FormControl('S', [Validators.required]),
     });
     this.formReport.reset();
     this.formReport.patchValue({
       startDate: new Date(),
       endDate: new Date(),
+      submit: 'S',
     });
   }
 
