@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { VERSION } from 'src/environments/version';
 import swal from 'sweetalert2';
 
 @Component({
@@ -23,7 +24,7 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.username = environment.username; //this.appGlobals.GV_USER_ID;
     this.appName = environment.appName; // this.appGlobals.GC_APP_NAME;
-    this.appVersion = environment.appVersion; // this.appGlobals.GC_APP_VERSION;
+    this.appVersion = VERSION.tag; // this.appGlobals.GC_APP_VERSION;
     this.menues = environment.menues; // this.appGlobals.GV_MENUES;
     this.appRegion = environment.appRegion;
   }

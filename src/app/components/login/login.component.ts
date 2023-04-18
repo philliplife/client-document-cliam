@@ -8,6 +8,7 @@ import { Subscriber, Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { LoginService } from 'src/app/services/login.service';
 import { environment } from 'src/environments/environment';
+import { VERSION } from 'src/environments/version';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.appName = environment.appName;
-    this.appVersion = environment.appVersion;
+    this.appVersion = VERSION.tag;
     this.appCode = environment.appCode;
     this.appRegion = environment.appRegion;
     environment.token = '';
